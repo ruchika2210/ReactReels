@@ -1,7 +1,12 @@
-import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 let object = require("./secret");
-firebase.initializeApp(object);
-let auth = firebase.auth();
-export default auth;
+
+//initialize firebase
+const app = initializeApp(object);
+export const auth = getAuth(app);
+export const database = getFirestore(app);
+export const storage = getStorage(app);
